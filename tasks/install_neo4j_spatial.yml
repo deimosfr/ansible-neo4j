@@ -1,0 +1,11 @@
+---
+
+- name: install neo4j spatial dependencies
+  apt: name=unzip state=installed update_cache=yes
+
+- name: install neo4j spatial
+  get_url: url=https://github.com/neo4j-contrib/m2/blob/master/releases/org/neo4j/neo4j-spatial/{{ neo4j_spatial_version }}/neo4j-spatial-{{ neo4j_spatial_version }}-server-plugin.zip?raw=true dest=/tmp/neo4j_spatial_{{ neo4j_spatial_version }}.zip
+
+- name: unzip neo4j spatial archive
+  unarchive: src=/tmp/neo4j_spatial_{{ neo4j_spatial_version }}.zip dest={{ neo4j_plugins_directory }} copy=no
+  notify: remove neo4j spatial archive

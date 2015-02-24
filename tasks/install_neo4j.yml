@@ -1,0 +1,42 @@
+---
+
+- name: install neo4j dependencies
+  apt: name={{ item }} state=present update_cache=yes force=yes
+  with_items:
+    - python-urllib3
+    - libpython-stdlib
+
+- name: install Java
+  apt: name={{ neo4j_java_package_name }} state=present update_cache=yes force=yes
+  when: neo4j_install_java
+
+- name: add Neo4j apt key
+  apt_key: url=http://debian.neo4j.org/neotechnology.gpg.key state=present
+
+- name: set Neo4j repository
+  apt_repository: repo="deb http://debian.neo4j.org/repo stable/" state=present update_cache=yes
+
+- name: install neo4j package
+  apt: name={{ neo4j_package }} state=present update_cache=yes force=yes
+
+- name: configure Neo4j properties
+  template: src=neo4j.properties dest=/etc/neo4j/neo4j.properties owner=neo4j group=adm mode=0644
+  notify: restart neo4j
+
+- name: set Neo4j server properties
+  template: src=neo4j-server.properties dest=/etc/neo4j/neo4j-server.properties owner=neo4j group=adm mode=0644
+  notify: restart neo4j
+
+- name: configure Neo4j wrapper properties
+  template: src=neo4j-wrapper.conf dest=/etc/neo4j/neo4j-wrapper.conf owner=neo4j group=adm mode=0644
+  notify: restart neo4j
+
+- name: set open fd soft and hard limit
+  lineinfile: dest=/etc/security/limits.conf regexp="{{ item.regexp }}" line="{{ item.line }}" insertbefore="# End of file" state=present
+  with_items:
+    - { regexp: '^neo4j\s+soft', line: 'neo4j   soft    nofile  {{ neo4j_nofile_value }}' }
+    - { regexp: '^neo4j\s+hard', line: 'neo4j   hard    nofile  {{ neo4j_nofile_value }}' }
+  when: neo4j_update_limits
+
+- name: ensure Neo4j is enabled and started
+  service: name=neo4j-service enabled=yes state=started

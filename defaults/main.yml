@@ -1,20 +1,5 @@
-Ansible Neo4j playbook
-=====
+---
 
-This role installs and configures Neo4j. It also handles Neo4j spatial.
-
-Requirements
-------------
-
-This role requires Ansible 1.6 or higher and platform requirements are listed
-in the metadata file.
-
-Role Variables
---------------
-
-The variables that can be passed to this role. You can find all options in
-
-```
 # Select neo4j version
 neo4j_package: neo4j # community version
 #neo4j_package: neo4j-advanced
@@ -65,35 +50,3 @@ neo4j_server_database_mode: SINGLE
 neo4j_server_http_log_enabled: false
 neo4j_server_http_log_config: conf/neo4j-http-logging.xml
 neo4j_keep_logical_logs: true
-```
-
-Examples
-========
-
-```
-# Roles
-- name: neo4j
-  hosts: neo4j
-  user: root
-  roles:
-    - deimosfr.neo4j
-  vars_files:
-    - "host_vars/neo4j.yml"
-```
-
-Dependencies
-------------
-
-- Java
-
-License
--------
-
-GPL2
-
-Author Information
-------------------
-
-Pierre Mavro / deimosfr
-
-
