@@ -46,6 +46,14 @@ neo4j_server_db_tuning_properties: conf/neo4j.properties
 neo4j_server_manage_console_engines: shell
 neo4j_server_database_mode: SINGLE
 
+# wrapper
+neo4j_wrapper_java_additional:
+  - '-Dorg.neo4j.server.properties=conf/neo4j-server.properties'
+  - '-Djava.util.logging.config.file=conf/logging.properties'
+  - '-Dlog4j.configuration=file:conf/log4j.properties'
+neo4j_wrapper_java_initmemory:
+neo4j_wrapper_java_maxmemory:
+
 # logging
 neo4j_server_http_log_enabled: false
 neo4j_server_http_log_config: conf/neo4j-http-logging.xml
