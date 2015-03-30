@@ -20,6 +20,9 @@ neo4j_package: neo4j # community version
 #neo4j_package: neo4j-advanced
 #neo4j_package: neo4j-enterprise
 
+# Manage service
+neo4j_manage_service: True
+
 # Neo4j spatial plugin
 neo4j_install_spatial: false
 neo4j_spatial_version: '0.13-neo4j-2.1.2'

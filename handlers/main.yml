@@ -2,6 +2,7 @@
 
 - name: restart neo4j
   service: name=neo4j-service state=restarted
+  when: neo4j_manage_service
 
 - name: remove neo4j spatial archive
   file: path=/tmp/neo4j_spatial_{{neo4j_spatial_version}}.zip state=absent force=yes
