@@ -14,7 +14,7 @@
   apt_key: url=http://debian.neo4j.org/neotechnology.gpg.key state=present
 
 - name: set Neo4j repository
-  apt_repository: repo="deb http://debian.neo4j.org/repo stable/" state=present update_cache=yes
+  apt_repository: repo="deb http://debian.neo4j.org/repo {{ neo4j_package_version }}/" state=present update_cache=yes
 
 - name: install neo4j package
   apt: name={{ neo4j_package }} state=present update_cache=yes force=yes

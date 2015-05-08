@@ -5,6 +5,11 @@ neo4j_package: neo4j # community version
 #neo4j_package: neo4j-advanced
 #neo4j_package: neo4j-enterprise
 
+# Package version
+neo4j_package_version: stable
+#neo4j_package_version: oldstable
+#neo4j_package_version: testing
+
 # Manage service
 neo4j_manage_service: True
 
