@@ -10,6 +10,9 @@ neo4j_package_version: stable
 #neo4j_package_version: oldstable
 #neo4j_package_version: testing
 
+# Force user id
+neo4j_uid:
+
 # Manage service
 neo4j_manage_service: True
 

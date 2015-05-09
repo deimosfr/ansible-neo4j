@@ -19,6 +19,10 @@
 - name: install neo4j package
   apt: name={{ neo4j_package }} state=present update_cache=yes force=yes
 
+- name: set neo4j user uid
+  user: name=neo4j uid={{ neo4j_uid }} state=present
+  when: neo4j_uid
+
 - name: configure Neo4j properties
   template: src=neo4j.properties dest=/etc/neo4j/neo4j.properties owner=neo4j group=adm mode=0644
   notify: restart neo4j
