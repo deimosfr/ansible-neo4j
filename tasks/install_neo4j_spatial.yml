@@ -9,7 +9,7 @@
   when: spatial_installed.stat.exists == False
 
 - name: install neo4j spatial
-  get_url: url=https://github.com/neo4j-contrib/m2/blob/master/releases/org/neo4j/neo4j-spatial/{{ neo4j_spatial_version }}/neo4j-spatial-{{ neo4j_spatial_version }}-server-plugin.zip?raw=true dest=/tmp/neo4j_spatial_{{ neo4j_spatial_version }}.zip
+  get_url: url=https://github.com/neo4j-contrib/m2/blob/master/releases/org/neo4j/neo4j-spatial/{{ neo4j_spatial_version }}/neo4j-spatial-{{ neo4j_spatial_version }}-server-plugin.zip?raw=true dest=/tmp/neo4j_spatial_{{ neo4j_spatial_version }}.zip timeout=60
   when: spatial_installed.stat.exists == False
 
 - name: unzip neo4j spatial archive
