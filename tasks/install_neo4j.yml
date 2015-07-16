@@ -24,7 +24,7 @@
   when: neo4j_uid
 
 - name: reset neo4j folder and subfolder to new uid
-  file: path=/var/lib/neo4j owner=neo4j group=adm follow=yes recurse=yes state=directory
+  file: path={{item}} owner=neo4j group=adm follow=yes recurse=yes state=directory
   with_items:
     - /var/lib/neo4j
     - /var/log/neo4j
