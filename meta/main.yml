@@ -10,6 +10,7 @@ galaxy_info:
       versions:
         - wheezy
         - jessie
-  categories:
+  galaxy_tags:
     - database
     - database:nosql
+dependencies: []
