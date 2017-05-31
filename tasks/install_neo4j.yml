@@ -50,5 +50,5 @@
   when: neo4j_update_limits
 
 - name: ensure Neo4j is enabled and started
-  service: name=neo4j-service enabled=yes state=started
+  service: name=neo4j enabled=yes state=started
   when: neo4j_manage_service

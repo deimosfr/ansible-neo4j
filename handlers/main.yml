@@ -1,7 +1,7 @@
 ---
 
 - name: restart neo4j
-  service: name=neo4j-service state=restarted
+  service: name=neo4j state=restarted
   when: neo4j_manage_service
 
 - name: remove neo4j spatial archive
