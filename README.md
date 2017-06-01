@@ -25,6 +25,9 @@ neo4j_package_version: stable
 #neo4j_package_version: oldstable
 #neo4j_package_version: testing
 
+# Service name
+neo4j_service_name: neo4j
+
 # Force user id
 neo4j_uid:
 
