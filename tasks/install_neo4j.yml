@@ -30,12 +30,8 @@
     - /var/log/neo4j
   when: neo4j_uid
 
-- name: configure Neo4j properties
-  template: src=neo4j.properties dest=/etc/neo4j/neo4j.properties owner=neo4j group=adm mode=0644
-  notify: restart neo4j
-
-- name: set Neo4j server properties
-  template: src=neo4j-server.properties dest=/etc/neo4j/neo4j-server.properties owner=neo4j group=adm mode=0644
+- name: configure Neo4j
+  template: src=neo4j.conf dest=/etc/neo4j/neo4j.conf owner=neo4j group=adm mode=0644
   notify: restart neo4j
 
 - name: configure Neo4j wrapper properties
