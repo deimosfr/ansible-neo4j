@@ -56,13 +56,11 @@ neo4j_server_webserver_https_keystore_location: data/keystore
 neo4j_server_webadmin_rrdb_location: data/rrd
 neo4j_server_webadmin_data_uri: /db/data/
 neo4j_server_webadmin_management_uri: /db/manage/
-neo4j_server_db_tuning_properties: conf/neo4j.properties
 neo4j_server_manage_console_engines: shell
 neo4j_server_database_mode: SINGLE
 
 # wrapper
 neo4j_wrapper_java_additional:
-  - '-Dorg.neo4j.server.properties=conf/neo4j-server.properties'
   - '-Djava.util.logging.config.file=conf/logging.properties'
   - '-Dlog4j.configuration=file:conf/log4j.properties'
 neo4j_wrapper_java_initmemory:
